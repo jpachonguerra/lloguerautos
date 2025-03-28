@@ -33,9 +33,10 @@ class Command(BaseCommand):
             )
             users.append(user)
 
-        # Crear reservas (2 por usuario)
+        # Crear reservas (entre 1 y 2 por usuario)
         for user in users:
-            for _ in range(2):
+            num_reservas = random.randint(1, 2)
+            for _ in range(num_reservas):
                 automobil = random.choice(automobils)
                 data_inici = fake.date_between(start_date='-30d', end_date='+30d')
                 data_final = data_inici + timedelta(days=random.randint(1, 7))
